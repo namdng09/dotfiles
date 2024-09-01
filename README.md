@@ -119,13 +119,3 @@ Harpoon is a Neovim plugin designed to simplify navigation within projects by pr
 ### [Comment](https://github.com/numToStr/Comment.nvim)
 
 Comment is a Neovim plugin that enhances code commenting functionality by providing intuitive and customizable key mappings for commenting and uncommenting code blocks. It supports various comment styles for different programming languages and offers features like toggling comments, commenting out entire lines, and handling nested comments efficiently. comment.nvim streamlines the commenting process in Neovim, improving code readability and productivity for users during development.
-
-## Support
-
-Consider supporting me on social media for putting this configuration together
-
-[Youtube](https://www.youtube.com/channel/UCOVeQepH1fCRgxeH6kuz7OQ)
-
-[Twitter](https://www.twitter.com/UnknownKoder)
-
-[Twitch](https://www.twitch.tv/unknownkoderyt)
