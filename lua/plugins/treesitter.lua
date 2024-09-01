@@ -1,25 +1,68 @@
 return {
-    "nvim-treesitter/nvim-treesitter",
-    dependencies = {
-        -- ts-autotag utilizes treesitter to understand the code structure to automatically close tsx tags
-        "windwp/nvim-ts-autotag"
-    },
-    -- when the plugin builds run the TSUpdate command to ensure all our servers are installed and updated
-    build = ':TSUpdate',
-    config = function()
-        -- gain access to the treesitter config functions
-        local ts_config = require("nvim-treesitter.configs")
+  "nvim-treesitter/nvim-treesitter",
+  event = { "BufReadPre", "BufNewFile" },
+  build = ":TSUpdate",
+  dependencies = {
+    "windwp/nvim-ts-autotag",
+  },
+  config = function()
+    -- Import nvim-treesitter plugin
+    local treesitter = require("nvim-treesitter.configs")
 
-        -- call the treesitter setup function with properties to configure our experience
-        ts_config.setup({
-            -- make sure we have vim, vimdoc, lua, java, javascript, typescript, html, css, json, tsx, markdown, markdown, inline markdown and gitignore highlighting servers
-            ensure_installed = {"vim", "vimdoc", "lua", "java", "javascript", "typescript", "html", "css", "json", "tsx", "markdown", "markdown_inline", "gitignore"},
-            -- make sure highlighting it anabled
-            highlight = {enable = true},
-            -- enable tsx auto closing tag creation
-            autotag = {
-                enable = true
-            }
-        })
-    end
+    -- Configure treesitter
+    treesitter.setup({
+      -- Enable syntax highlighting
+      highlight = {
+        enable = true,
+      },
+      -- Enable indentation
+      indent = {
+        enable = true,
+      },
+      -- Enable autotagging (with nvim-ts-autotag plugin)
+      autotag = {
+        enable = true,
+      },
+      -- Ensure these language parsers are installed
+      ensure_installed = {
+        "json",
+        "javascript",
+        "typescript",
+        "tsx",
+        "yaml",
+        "html",
+        "css",
+        "prisma",
+        "markdown",
+        "markdown_inline",
+        "svelte",
+        "graphql",
+        "bash",
+        "lua",
+        "vim",
+        "dockerfile",
+        "gitignore",
+        "query",
+        "vimdoc",
+        "c",
+        "java", -- Added Java
+        "go", -- Added Go
+      },
+      -- Enable incremental selection
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "<C-space>",
+          node_incremental = "<C-space>",
+          scope_incremental = false,
+          node_decremental = "<bs>",
+        },
+      },
+      -- Additional required fields
+      modules = {},
+      sync_install = false,
+      ignore_install = {},
+      auto_install = true,
+    })
+  end,
 }

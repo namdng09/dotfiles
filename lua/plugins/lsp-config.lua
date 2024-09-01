@@ -66,5 +66,5 @@ return {
             -- Set a vim motion for <Space> + c + <Shift>D to go to where the code/object was declared in the project (class file)
             vim.keymap.set("n", "<leader>cD", vim.lsp.buf.declaration, { desc = "[C]ode Goto [D]eclaration" })
         end
-    }
+    },
 }
