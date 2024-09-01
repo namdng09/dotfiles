@@ -1,39 +1,42 @@
--- Left column and similar settings
-vim.opt.number = true -- display line numbers
-vim.opt.relativenumber = true -- display relative line numbers
-vim.opt.numberwidth = 2 -- set width of line number column
-vim.opt.signcolumn = "yes" -- always show sign column
-vim.opt.wrap = false -- display lines as single line
-vim.opt.scrolloff = 10 -- number of lines to keep above/below cursor
-vim.opt.sidescrolloff = 8 -- number of columns to keep to the left/right of cursor
+local opt = vim.opt -- for conciseness
 
--- Tab spacing/behavior
-vim.opt.expandtab = true -- convert tabs to spaces
-vim.opt.shiftwidth = 4 -- number of spaces inserted for each indentation level
-vim.opt.tabstop = 4 -- number of spaces inserted for tab character
-vim.opt.softtabstop = 4 -- number of spaces inserted for <Tab> key
-vim.opt.smartindent = true -- enable smart indentation
-vim.opt.breakindent = true -- enable line breaking indentation
+-- line numbers
+opt.relativenumber = true -- show relative line numbers
+opt.number = true -- shows absolute line number on cursor line (when relative number is on)
 
--- General Behaviors
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-vim.opt.backup = false -- disable backup file creation
-vim.opt.clipboard = "unnamedplus" -- enable system clipboard access
-vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
-vim.opt.fileencoding = "utf-8" -- set file encoding to UTF-8
-vim.opt.mouse = "a" -- enable mouse support
-vim.opt.showmode = false -- hide mode display
-vim.opt.splitbelow = true -- force horizontal splits below current window
-vim.opt.splitright = true -- force vertical splits right of current window
-vim.opt.termguicolors = true -- enable term GUI colors
-vim.opt.timeoutlen = 1000 -- set timeout for mapped sequences
-vim.opt.undofile = true -- enable persistent undo
-vim.opt.updatetime = 100 -- set faster completion
-vim.opt.writebackup = false -- prevent editing of files being edited elsewhere
-vim.opt.cursorline = true -- highlight current line
+-- tabs & indentation
+opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
+opt.shiftwidth = 2 -- 2 spaces for indent width
+opt.expandtab = true -- expand tab to spaces
+opt.autoindent = true -- copy indent from current line when starting new one
 
--- Searching Behaviors
-vim.opt.hlsearch = true -- highlight all matches in search
-vim.opt.ignorecase = true -- ignore case in search
-vim.opt.smartcase = true -- match case if explicitly stated
+-- line wrapping
+opt.wrap = false -- disable line wrapping
+
+-- search settings
+opt.ignorecase = true -- ignore case when searching
+opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
+
+-- cursor line
+opt.cursorline = true -- highlight the current cursor line
+
+-- appearance
+
+-- turn on termguicolors for nightfly colorscheme to work
+-- (have to use iterm2 or any other true color terminal)
+opt.termguicolors = true
+opt.background = "dark" -- colorschemes that can be light or dark will be made dark
+opt.signcolumn = "yes" -- show sign column so that text doesn't shift
+
+-- backspace
+opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
+
+-- clipboard
+vim.opt.clipboard = "unnamedplus" -- use system clipboard as default register
+
+-- split windows
+opt.splitright = true -- split vertical window to the right
+opt.splitbelow = true -- split horizontal window to the bottom
+
+-- turn off swapfile
+opt.swapfile = false
