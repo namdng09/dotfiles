@@ -45,4 +45,7 @@ keymap.set("n", "#", "#zzzv", { desc = "jump to the previous instance of a word 
 keymap.set("n", "<leader>o", "o<Esc>", { desc = "Create a new line below and still in normal mode" })
 keymap.set("n", "<leader>O", "O<Esc>", { desc = "Create a new line above and still in normal mode" })
 
+keymap.set("n", "<leader>yy", "<cmd>%y<CR>", { desc = "Yank all lines in file" })
+keymap.set("n", "<leader>dd", "<cmd>%d<CR>", { desc = "Delete all lines in file" })
+
 keymap.set("n", "<leader>rn", ":IncRename ")
