@@ -12,7 +12,7 @@ return {
         config = function()
             -- ensure that we have lua language server, typescript launguage server, java language server, and java test language server are installed
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "jdtls" },
+                ensure_installed = { "ts_ls", "lua_ls", "jdtls" },
             })
         end
     },
@@ -44,6 +44,20 @@ return {
             -- setup the lua language server
             lspconfig.lua_ls.setup({
                 capabilities = capabilities,
+            })
+
+            -- setup the tsserver language server (TypeScript/JavaScript)
+            lspconfig.tsserver.setup({
+                on_attach = function(client, bufnr)
+                    -- Customize keymaps or disable formatting if needed
+                    client.resolved_capabilities.document_formatting = false
+                end,
+                capabilities = capabilities,
+                init_options = {
+                    preferences = {
+                        disableSuggestions = true, -- Example preference
+                    },
+                },
             })
 
             -- Set vim motion for <Space> + c + h to show code documentation about the code the cursor is currently over if available
