@@ -12,7 +12,7 @@ return {
         config = function()
             -- ensure that we have lua language server, typescript launguage server, java language server, and java test language server are installed
             require("mason-lspconfig").setup({
-                ensure_installed = { "ts_ls", "lua_ls", "jdtls" },
+                ensure_installed = { "eslint", "ts_ls", "lua_ls", "jdtls" },
             })
         end
     },
