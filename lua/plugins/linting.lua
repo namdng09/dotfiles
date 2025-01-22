@@ -16,12 +16,12 @@ return {
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 
     -- Chỉ chạy lint sau khi lưu file
-    vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-      group = lint_augroup,
-      callback = function()
-        lint.try_lint()
-      end,
-    })
+    -- vim.api.nvim_create_autocmd({ }, {
+    --   group = lint_augroup,
+    --   callback = function()
+    --     lint.try_lint()
+    --   end,
+    -- })
 
     vim.keymap.set("n", "<leader>l", function()
       lint.try_lint()
