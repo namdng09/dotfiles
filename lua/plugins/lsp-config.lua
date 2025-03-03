@@ -47,7 +47,7 @@ return {
             })
 
             -- setup the tsserver language server (TypeScript/JavaScript)
-            lspconfig.tsserver.setup({
+            lspconfig.ts_ls.setup({
                 on_attach = function(client, bufnr)
                     -- Customize keymaps or disable formatting if needed
                     client.resolved_capabilities.document_formatting = false
