@@ -7,7 +7,7 @@ return {
 		priority = 1000,
 		name = 'catppuccin',
 		opts = {
-			flavour = 'macchiato', -- latte, frappe, macchiato, mocha
+			flavour = 'latte', -- latte, frappe, macchiato, mocha
 			dim_inactive = { enabled = false },
 			integrations = {
 				aerial = true,

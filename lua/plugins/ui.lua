@@ -1,150 +1,68 @@
 return {
-  -- {
-  --   "folke/noice.nvim",
-  --   opts = function(_, opts)
-  --     opts.debug = false
-  --     opts.routes = opts.routes or {}
-  --     table.insert(opts.routes, {
-  --       filter = {
-  --         event = "notify",
-  --         find = "No information available",
-  --       },
-  --       opts = { skip = true },
-  --     })
-  --     local focused = true
-  --     vim.api.nvim_create_autocmd("FocusGained", {
-  --       callback = function()
-  --         focused = true
-  --       end,
-  --     })
-  --     vim.api.nvim_create_autocmd("FocusLost", {
-  --       callback = function()
-  --         focused = false
-  --       end,
-  --     })
-  --
-  --     table.insert(opts.routes, 1, {
-  --       filter = {
-  --         ["not"] = {
-  --           event = "lsp",
-  --           kind = "progress",
-  --         },
-  --         cond = function()
-  --           return not focused
-  --         end,
-  --       },
-  --       view = "notify_send",
-  --       opts = { stop = false },
-  --     })
-  --
-  --     vim.api.nvim_create_autocmd("FileType", {
-  --       pattern = "markdown",
-  --       callback = function(event)
-  --         vim.schedule(function()
-  --           require("noice.text.markdown").keys(event.buf)
-  --         end)
-  --       end,
-  --     })
-  --     return opts
-  --   end,
-  -- },
+  { "akinsho/bufferline.nvim", opts = { options = { separator_style = "slope" } } },
 
-  -- { "folke/which-key.nvim", enabled = true, config = function() end },
-  { "folke/noice.nvim", enabled = true },
-
-  "folke/twilight.nvim",
   {
-    "folke/zen-mode.nvim",
-    cmd = "ZenMode",
+    "folke/which-key.nvim",
+    enabled = true,
     opts = {
-      window = { backdrop = 0.7 },
-      plugins = {
-        gitsigns = true,
-        tmux = true,
-        kitty = { enabled = false, font = "+2" },
-      },
-    },
-    keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },
-  },
-
-  -- filename
-	{
-		"b0o/incline.nvim",
-		dependencies = { "craftzdog/solarized-osaka.nvim" },
-		event = "BufReadPre",
-		priority = 1200,
-		config = function()
-			local colors = require("solarized-osaka.colors").setup()
-			require("incline").setup({
-				highlight = {
-					groups = {
-						InclineNormal = { guibg = colors.magenta500, guifg = colors.base04 },
-						InclineNormalNC = { guifg = colors.violet500, guibg = colors.base03 },
-					},
-				},
-				window = { margin = { vertical = 0, horizontal = 1 } },
-				hide = {
-					cursorline = true,
-				},
-				render = function(props)
-					local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
-					if vim.bo[props.buf].modified then
-						filename = "[+] " .. filename
-					end
-
-					local icon, color = require("nvim-web-devicons").get_icon_color(filename)
-					return { { icon, guifg = color }, { " " }, { filename } }
-				end,
-			})
-		end,
-	},
-
-  {
-		'rcarriga/nvim-notify',
-		priority = 9000,
-		keys = {
-			{
-				'<leader>un',
-				function()
-					require('notify').dismiss({ silent = true, pending = true })
-				end,
-				desc = 'Dismiss All Notifications',
-			},
-		},
-		opts = {
-			stages = 'static',
-			timeout = 5000,
-			max_height = function()
-				return math.floor(vim.o.lines * 0.75)
-			end,
-			max_width = function()
-				return math.floor(vim.o.columns * 0.75)
-			end,
-			on_open = function(win)
-				vim.api.nvim_win_set_config(win, { zindex = 100 })
-			end,
-		},
-	},
-
-  -- buffer line
-  {
-    "akinsho/bufferline.nvim",
-    event = "VeryLazy",
-    keys = {
-      { "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next tab" },
-      { "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev tab" },
-    },
-    opts = {
-      options = {
-        mode = "tabs",
-        -- separator_style = "slant",
-        show_buffer_close_icons = false,
-        show_close_icon = false,
-      },
+      preset = "helix",
+      debug = vim.uv.cwd():find("which%-key"),
+      win = {},
+      spec = {},
     },
   },
 
   {
+    "folke/noice.nvim",
+    opts = function(_, opts)
+      opts.debug = false
+      opts.routes = opts.routes or {}
+      table.insert(opts.routes, {
+        filter = {
+          event = "notify",
+          find = "No information available",
+        },
+        opts = { skip = true },
+      })
+      local focused = true
+      vim.api.nvim_create_autocmd("FocusGained", {
+        callback = function()
+          focused = true
+        end,
+      })
+      vim.api.nvim_create_autocmd("FocusLost", {
+        callback = function()
+          focused = false
+        end,
+      })
+
+      table.insert(opts.routes, 1, {
+        filter = {
+          ["not"] = {
+            event = "lsp",
+            kind = "progress",
+          },
+          cond = function()
+            return not focused and false
+          end,
+        },
+        view = "notify_send",
+        opts = { stop = false, replace = true },
+      })
+
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "markdown",
+        callback = function(event)
+          vim.schedule(function()
+            require("noice.text.markdown").keys(event.buf)
+          end)
+        end,
+      })
+      return opts
+    end,
+  },
+
+{
 	"nvim-lualine/lualine.nvim",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
@@ -217,4 +135,19 @@ return {
     end,
   },
 
+  -- "folke/twilight.nvim",
+
+  -- {
+  --   "folke/zen-mode.nvim",
+  --   cmd = "ZenMode",
+  --   opts = {
+  --     window = { backdrop = 0.7 },
+  --     plugins = {
+  --       gitsigns = true,
+  --       tmux = true,
+  --       kitty = { enabled = false, font = "+2" },
+  --     },
+  --   },
+  --   keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },
+  -- },
 }
