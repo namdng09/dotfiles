@@ -17,7 +17,7 @@ return {
       },
       -- Enable indentation
       indent = {
-        enable = true,
+        enable = false,
       },
       -- Enable autotagging (with nvim-ts-autotag plugin)
       autotag = {
