@@ -21,6 +21,7 @@ return {
             "hrsh7th/cmp-buffer",
             -- path based completion options
             "hrsh7th/cmp-path",
+            "mlaursen/vim-react-snippets",
         },
         config = function()
             -- Gain access to the functions of the cmp plugin
@@ -30,6 +31,8 @@ return {
 
             -- Lazily load the vscode like snippets
             require("luasnip.loaders.from_vscode").lazy_load()
+
+            require("vim-react-snippets").lazy_load()
 
             -- All the cmp setup function to configure our completion experience
             cmp.setup({
