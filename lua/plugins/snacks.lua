@@ -83,9 +83,27 @@ return {
   },
   keys = {
     -- Fuzzy find
-    { "<leader><space>", function() Snacks.picker.smart() end,                                   desc = "Smart Find Files" },
-    { "<leader>ff",      function() Snacks.picker.files() end,                                   desc = "Fuzzy find recent files" },
-    { "<leader>fs",      function() Snacks.picker.grep() end,                                    desc = "Grep" },
+    { "<leader>fm", function() Snacks.picker.smart() end,                                   desc = "Smart Find Files" },
+    {
+      "<leader>ff",
+      function()
+        Snacks.picker.files({
+          -- include files ignored by .gitignore
+          args = { "--no-ignore", "--no-ignore-vcs", "--hidden", "--glob", "!node_modules/*", "--glob", "!target/*", "--glob", "!dist/*" },
+        })
+      end,
+      desc = "Fuzzy find recent files"
+    },
+    {
+      "<leader>fs",
+      function()
+        Snacks.picker.grep({
+          -- include files ignored by .gitignore
+          args = { "--no-ignore", "--no-ignore-vcs", "--hidden", "--glob", "!node_modules/*", "--glob", "!target/*", "--glob", "!dist/*" },
+        })
+      end,
+      desc = "Grep"
+    },
     { "<leader>fb",      function() Snacks.picker.buffers() end,                                 desc = "Buffers" },
     { "<leader>fc",      function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
     -- git
