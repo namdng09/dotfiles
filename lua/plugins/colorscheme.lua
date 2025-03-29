@@ -6,13 +6,35 @@ return {
     priority = 1000,
     name = 'catppuccin',
     opts = {
-      flavour = "auto", -- latte, frappe, macchiato, mocha
-      background = {    -- :h background
+      flavour = "mocha",   -- latte, frappe, macchiato, mocha
+      background = {       -- :h background
         light = "latte",
         dark = "mocha",
       },
-      transparent_background = false,
-      dim_inactive = { enabled = false },
+      transparent_background = true,
+      dim_inactive = {
+        enabled = false,    -- dims the background color of inactive window
+        shade = "dark",
+        percentage = 0.15,  -- percentage of the shade to apply to the inactive window
+      },
+      no_italic = false,    -- Force no italic
+      no_bold = false,      -- Force no bold
+      no_underline = false, -- Force no underline
+      styles = {            -- Handles the styles of general hi groups (see :h highlight-args):
+        comments = { "italic" },
+        conditionals = { "italic" },
+        loops = { "bold" },
+        functions = { "italic", "bold" },
+        keywords = { "bold" },
+        strings = { "italic" },
+        variables = {},
+        numbers = { "bold" },
+        booleans = { "bold", "italic" },
+        properties = { "italic" },
+        types = { "bold" },
+        operators = { "bold" },
+        -- miscs = {}, -- Uncomment to turn off hard-coded styles
+      },
       integrations = {
         aerial = true,
         harpoon = true,
@@ -57,8 +79,4 @@ return {
     end
   },
 
-  -- Onedarkpro
-  {
-    "olimorris/onedarkpro.nvim",
-  },
 }
