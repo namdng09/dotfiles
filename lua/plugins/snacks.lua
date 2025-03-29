@@ -23,6 +23,7 @@ return {
         keys = {
           { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
           { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+          { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
           { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
           { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
           { icon = " ", key = "s", desc = "Restore Session", section = "session" },
@@ -46,10 +47,10 @@ return {
         {
           section = "terminal",
           cmd = "pokemon-colorscripts -r --no-title; sleep .1",
-          random = 9,
+          random = 10,
           pane = 2,
           indent = 4,
-          height = 30,
+          height = 20,
         },
       },
     },
@@ -104,23 +105,27 @@ return {
       end,
       desc = "Grep"
     },
-    { "<leader>fb",      function() Snacks.picker.buffers() end,                                 desc = "Buffers" },
-    { "<leader>fc",      function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
+    { "<leader>fb", function() Snacks.picker.buffers() end,                                 desc = "Buffers" },
+    { "<leader>bd", function() Snacks.bufdelete() end,                                      desc = "Delete Buffer" },
+    { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
     -- git
-    { "<leader>gb",      function() Snacks.picker.git_branches() end,                            desc = "Git Branches" },
-    { "<leader>gB",      function() Snacks.picker.blame_line() end,                              desc = "Git Branches" },
-    { "<leader>gl",      function() Snacks.picker.git_log() end,                                 desc = "Git Log" },
-    { "<leader>gL",      function() Snacks.picker.git_log_line() end,                            desc = "Git Log Line" },
-    { "<leader>gs",      function() Snacks.picker.git_status() end,                              desc = "Git Status" },
-    { "<leader>gS",      function() Snacks.picker.git_stash() end,                               desc = "Git Stash" },
-    { "<leader>gd",      function() Snacks.picker.git_diff() end,                                desc = "Git Diff (Hunks)" },
-    { "<leader>gf",      function() Snacks.picker.git_log_file() end,                            desc = "Git Log File" },
+    { "<leader>gb", function() Snacks.picker.git_branches() end,                            desc = "Git Branches" },
+    { "<leader>gB", function() Snacks.picker.blame_line() end,                              desc = "Git Branches" },
+    { "<leader>gl", function() Snacks.picker.git_log() end,                                 desc = "Git Log" },
+    { "<leader>gL", function() Snacks.picker.git_log_line() end,                            desc = "Git Log Line" },
+    { "<leader>gs", function() Snacks.picker.git_status() end,                              desc = "Git Status" },
+    { "<leader>gS", function() Snacks.picker.git_stash() end,                               desc = "Git Stash" },
+    { "<leader>gd", function() Snacks.picker.git_diff() end,                                desc = "Git Diff (Hunks)" },
+    { "<leader>gf", function() Snacks.picker.git_log_file() end,                            desc = "Git Log File" },
+    -- search
+    { "<leader>cl", function() Snacks.picker.colorschemes() end,                            desc = "Colorschemes" },
     -- Lazy git
-    { "<leader>lg",      function() Snacks.lazygit() end,                                        desc = "Lazygit" },
+    { "<leader>lg", function() Snacks.lazygit() end,                                        desc = "Lazygit" },
     -- LSP
-    { "gd",              function() Snacks.picker.lsp_definitions() end,                         desc = "Goto Definition" },
-    { "gD",              function() Snacks.picker.lsp_declarations() end,                        desc = "Goto Declaration" },
     -- Other
-    { "<leader>z",       function() Snacks.zen() end,                                            desc = "Toggle Zen Mode" },
+    { "<leader>z",  function() Snacks.zen() end,                                            desc = "Toggle Zen Mode" },
+    { "<leader>Z",  function() Snacks.zen.zoom() end,                                       desc = "Toggle Zoom" },
+    { "<leader>bd", function() Snacks.bufdelete() end,                                      desc = "Delete Buffer" },
+    { "<leader>rn", function() Snacks.rename.rename_file() end,                             desc = "Rename File" },
   }
 }
