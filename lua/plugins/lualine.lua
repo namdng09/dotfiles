@@ -5,12 +5,15 @@ return {
   },
   config = function()
     -- call the setup function with properties to define how our lualine will look
+    local custom_horizon = require 'lualine.themes.horizon'
+    custom_horizon.normal.c.bg = 'None'
     require("lualine").setup({
       options = {
+
         -- Use web devicons if you have a nerdfont installed
         icons_enabled = true,
         -- Set the theme to dracula, lualine documentation has other themes available as well
-        theme = 'horizon',
+        theme = custom_horizon,
         -- Separate components of lua line with chevrons
         component_separators = { left = "", right = "" },
         -- Separate sections with solid triangles
