@@ -31,7 +31,14 @@ return {
       -- sections start at a on the left and go to z on the right
       sections = {
         -- display the current mode in section a
-        lualine_a = { "mode" },
+        lualine_a = {
+          {
+            'mode',
+            icons_enabled = true, -- Enables the display of icons alongside the component.
+            -- separator = { left = '', right = ''},
+            color = { gui = 'italic,bold' },
+          }
+        },
         -- display the current git branch, git differences, and any code diagnostics in section b
         lualine_b = { "branch", "diff", "diagnostics" },
         -- display the filename in section c
@@ -49,10 +56,10 @@ return {
             shorting_target = 40, -- Shortens path to leave 40 spaces in the window
             -- for other components. (terrible name, any suggestions?)
             symbols = {
-              modified = '[+]',      -- Text to show when the file is modified.
-              readonly = '[-]',      -- Text to show when the file is non-modifiable or readonly.
+              modified = ' ',   -- Text to show when the file is modified.
+              readonly = '',      -- Text to show when the file is non-modifiable or readonly.
               unnamed = '[No Name]', -- Text to show for unnamed buffers.
-              newfile = '[New]',     -- Text to show for newly created file before first write
+              newfile = '',     -- Text to show for newly created file before first write
             },
             color = { fg = '#ffaa88', bg = 'inactivegray', gui = 'italic,bold' },
           }
