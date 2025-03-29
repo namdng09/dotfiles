@@ -35,7 +35,6 @@ return {
           {
             'mode',
             icons_enabled = true, -- Enables the display of icons alongside the component.
-            -- separator = { left = '', right = ''},
             color = { gui = 'italic,bold' },
           }
         },
@@ -53,21 +52,24 @@ return {
             -- 3: Absolute path, with tilde as the home directory
             -- 4: Filename and parent dir, with tilde as the home directory
 
-            shorting_target = 40, -- Shortens path to leave 40 spaces in the window
+            shorting_target = 20, -- Shortens path to leave 20 spaces in the window
             -- for other components. (terrible name, any suggestions?)
             symbols = {
-              modified = ' ',   -- Text to show when the file is modified.
-              readonly = '',      -- Text to show when the file is non-modifiable or readonly.
-              unnamed = '[No Name]', -- Text to show for unnamed buffers.
-              newfile = '',     -- Text to show for newly created file before first write
+              modified = ' ', -- Text to show when the file is modified.
+              readonly = '', -- Text to show when the file is non-modifiable or readonly.
+              unnamed = '󰏝', -- Text to show for unnamed buffers.
+              newfile = '', -- Text to show for newly created file before first write
             },
             color = { fg = '#ffaa88', bg = 'inactivegray', gui = 'italic,bold' },
+            padding = 1, -- Adds padding to the left and right of components.
+            -- Padding can be specified to left or right independently, e.g.:
+            --   padding = { left = left_padding, right = right_padding }
           }
         },
         -- display the file encoding type, os, and filetype in section x
-        lualine_x = { "fileformat", "filetype" },
+        lualine_x = {},
         -- display where you are at in the file in section y
-        lualine_y = { "progress" },
+        lualine_y = { "filetype" },
         -- display exact location of the cursor in section z
         lualine_z = { "location" },
       },
@@ -77,9 +79,9 @@ return {
         lualine_a = {},
         lualine_b = {},
         -- display the file name in section c
-        lualine_c = { "filename" },
+        lualine_c = {},
         -- display the exact location of the cursor in section x
-        lualine_x = { "location" },
+        lualine_x = {},
         -- display nothing in sections y and z
         lualine_y = {},
         lualine_z = {},
