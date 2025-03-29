@@ -2,6 +2,7 @@ return {
   "nvim-lualine/lualine.nvim",
   dependencies = {
     "nvim-tree/nvim-web-devicons",
+    "lewis6991/gitsigns.nvim",
   },
   config = function()
     -- call the setup function with properties to define how our lualine will look
