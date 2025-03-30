@@ -29,7 +29,7 @@ return {
         -- Always divide lualine in the middle
         always_divide_middle = false,
         always_show_tabline = false,
-        globalstatus = false,
+        globalstatus = true,
         refresh = {
           statusline = 10,
           tabline = 10,
