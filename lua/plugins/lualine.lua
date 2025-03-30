@@ -7,7 +7,7 @@ return {
   config = function()
     -- call the setup function with properties to define how our lualine will look
     local custom_horizon = require 'lualine.themes.horizon'
-    custom_horizon.normal.c.bg = 'None'
+    -- custom_horizon.normal.c.bg = 'None'
     require("lualine").setup({
       options = {
 
@@ -25,7 +25,7 @@ return {
           winbar = {},
         },
         -- Don't focus lualine on NvimTree
-        ignore_focus = { "NvimTree" },
+        -- ignore_focus = { "NvimTree" },
         -- Always divide lualine in the middle
         always_divide_middle = false,
         always_show_tabline = false,
