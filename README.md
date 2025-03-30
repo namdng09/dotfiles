@@ -1,10 +1,10 @@
-# NeoVim Configuration For Fullstack Java Developers
+# NeoVim Configuration For Fullstack JavaScript Developers
 
 Welcome to the start, or continuation of your NeoVim journey, I'm excited to have you on board!
 
-This repository holds the configuration code for my simple yet effective NeoVim configuration for Fullstack Java Developers who's primary job is to develop Spring Boot Applications and Frontends using TypeScript and React.
+This repository holds the configuration code for my simple yet effective NeoVim configuration for Fullstack Java Developers whose JavaScript primary job is to develop Spring Boot Applications and Frontends using TypeScript and React.
 
-Of course this is just a starting point for you to configure, and just the tip of the ice berg when it comes to customization, so whenever you move onto different languages, or want more features I have designed the structure of the configuratuion to be easily customized.
+Of course, this is just a starting point for you to configure and just the tip of the iceberg when it comes to customization. So whenever you move onto different languages or want more features, I have designed the structure of the configuration to be easily customized.
 
 This configuration repository goes along with my tutorial on how to setup NeoVim for Java Developers, which you can find [here](https://youtu.be/zbpF3te0M3g) to follow along and get explanations of the different plugins we are configuring.
 
