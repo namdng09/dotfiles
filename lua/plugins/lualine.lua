@@ -27,9 +27,14 @@ return {
         -- Don't focus lualine on NvimTree
         ignore_focus = { "NvimTree" },
         -- Always divide lualine in the middle
-        always_divide_middle = true,
-        -- Disable global status
+        always_divide_middle = false,
+        always_show_tabline = false,
         globalstatus = false,
+        refresh = {
+          statusline = 10,
+          tabline = 10,
+          winbar = 10,
+        }
       },
       -- Setup what each lualine section will contain
       -- sections start at a on the left and go to z on the right
@@ -45,7 +50,34 @@ return {
         -- display the current git branch, git differences, and any code diagnostics in section b
         lualine_b = { "branch", "diff", "diagnostics" },
         -- display the filename in section c
-        lualine_c = {
+        lualine_c = {},
+        -- display the file encoding type, os, and filetype in section x
+        lualine_x = {},
+        -- display where you are at in the file in section y
+        lualine_y = { "filetype" },
+        -- display exact location of the cursor in section z
+        lualine_z = { "location" },
+      },
+      -- Setup what each section will contain in inactive buffers
+      inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {},
+      },
+      -- Use default values for tabline, winbar, inactive winbar and extensions
+      tabline = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {}
+      },
+      winbar = {
+        lualine_a = {
           {
             'filename',
             file_status = true,     -- Displays file status (readonly status, modified status)
@@ -64,36 +96,26 @@ return {
               unnamed = '󰏝', -- Text to show for unnamed buffers.
               newfile = '', -- Text to show for newly created file before first write
             },
-            color = { fg = '#ffaa88', bg = 'inactivegray', gui = 'italic,bold' },
+            -- color = { fg = '#ffaa88', bg = 'inactivegray', gui = 'italic,bold' },
             padding = 1, -- Adds padding to the left and right of components.
             -- Padding can be specified to left or right independently, e.g.:
             --   padding = { left = left_padding, right = right_padding }
           }
         },
-        -- display the file encoding type, os, and filetype in section x
-        lualine_x = {},
-        -- display where you are at in the file in section y
-        lualine_y = { "filetype" },
-        -- display exact location of the cursor in section z
-        lualine_z = { "location" },
-      },
-      -- Setup what each section will contain in inactive buffers
-      inactive_sections = {
-        -- display nothing in sections a and b
-        lualine_a = {},
         lualine_b = {},
-        -- display the file name in section c
         lualine_c = {},
-        -- display the exact location of the cursor in section x
         lualine_x = {},
-        -- display nothing in sections y and z
         lualine_y = {},
         lualine_z = {},
       },
-      -- Use default values for tabline, winbar, inactive winbar and extensions
-      tabline = {},
-      winbar = {},
-      inactive_winbar = {},
+      inactive_winbar = {
+        lualine_a = { 'filename' },
+        lualine_b = {},
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {},
+      },
       extensions = {},
     })
   end,
