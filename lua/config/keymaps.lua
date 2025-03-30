@@ -47,5 +47,3 @@ keymap.set("n", "<leader>O", "O<Esc>", { desc = "Create a new line above and sti
 
 keymap.set("n", "<leader>yy", "<cmd>%y<CR>", { desc = "Yank all lines in file" })
 keymap.set("n", "<leader>dd", "<cmd>%d<CR>", { desc = "Delete all lines in file" })
-
-keymap.set("n", "<leader>rn", ":IncRename ")

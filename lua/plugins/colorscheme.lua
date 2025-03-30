@@ -1,60 +1,48 @@
-return {
+local spec = {
+  "catppuccin/nvim",
+  name = "catppuccin",
+  enabled = true,
+  lazy = false,
+  priority = 1000,
+};
 
-  -- Soothing pastel theme
-  {
-    'catppuccin/nvim',
-    lazy = false,
-    priority = 1000,
-    name = 'catppuccin',
-    opts = {
-      flavour = "auto", -- latte, frappe, macchiato, mocha
-      background = {  -- :h background
-        light = "latte",
-        dark = "mocha",
-      },
-      transparent_background = false,
-      dim_inactive = { enabled = false },
-      integrations = {
-        aerial = true,
-        harpoon = true,
-        lazygit = true,
-        alpha = true,
-        cmp = true,
-        dashboard = true,
-        flash = true,
-        gitsigns = true,
-        grug_far = true,
-        headlines = true,
-        illuminate = true,
-        indent_blankline = { enabled = true },
-        leap = true,
-        lsp_trouble = true,
-        mason = true,
-        markdown = true,
-        mini = true,
-        native_lsp = {
-          enabled = true,
-          underlines = {
-            errors = { 'undercurl' },
-            hints = { 'undercurl' },
-            warnings = { 'undercurl' },
-            information = { 'undercurl' },
-          },
-        },
-        navic = { enabled = true, custom_bg = 'lualine' },
-        neotest = true,
-        neotree = true,
-        noice = true,
-        notify = true,
-        semantic_tokens = true,
-        telescope = true,
-        treesitter = true,
-        treesitter_context = true,
-        which_key = true,
-      },
+spec.config = function()
+  require("catppuccin").setup({
+    no_italic = false,    -- Force no italic
+    no_bold = false,      -- Force no bold
+    no_underline = false, -- Force no underline
+    styles = {            -- Handles the styles of general hi groups (see :h highlight-args):
+      comments = { "italic" },
+      conditionals = { "italic" },
+      loops = { "bold" },
+      functions = { "italic", "bold" },
+      keywords = { "bold" },
+      strings = {},
+      variables = {},
+      numbers = { "bold" },
+      booleans = { "bold", "italic" },
+      properties = { "italic" },
+      types = { "underdashed" },
+      operators = { "bold" },
+      -- miscs = {}, -- Uncomment to turn off hard-coded styles
     },
-    config = function()
-      vim.cmd.colorscheme "catppuccin"
-    end
-  },
-}
+    custom_highlights = function(colors)
+      return {
+        Folded = { bg = colors.none },
+        UfoFoldedEllipsis = { fg = colors.blue, bg = colors.none },
+      }
+    end,
+    integrations = {
+      mason = true,
+      noice = true,
+      harpoon = true,
+      cmp = true,
+      lsp_trouble = true,
+      which_key = true,
+    }
+  })
+
+  vim.cmd.colorscheme("catppuccin")
+end
+
+return spec
