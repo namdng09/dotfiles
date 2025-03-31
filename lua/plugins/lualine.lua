@@ -109,7 +109,12 @@ return {
         lualine_z = {},
       },
       inactive_winbar = {
-        lualine_a = { 'filename' },
+        lualine_a = {
+          {
+            'filename',
+            color = { fg = '#ffaa88', gui = 'italic,bold' },
+          }
+        },
         lualine_b = {},
         lualine_c = {},
         lualine_x = {},
