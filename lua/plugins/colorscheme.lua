@@ -22,7 +22,7 @@ spec.config = function()
       numbers = { "bold" },
       booleans = { "bold", "italic" },
       properties = { "italic" },
-      types = { "underdashed" },
+      types = { "underline" },
       operators = { "bold" },
       -- miscs = {}, -- Uncomment to turn off hard-coded styles
     },
