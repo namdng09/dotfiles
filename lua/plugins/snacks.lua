@@ -110,7 +110,7 @@ return {
     { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
     -- git
     { "<leader>gb", function() Snacks.picker.git_branches() end,                            desc = "Git Branches" },
-    { "<leader>gB", function() Snacks.picker.blame_line() end,                              desc = "Git Branches" },
+    { "<leader>gB", function() Snacks.git.blame_line() end,                                 desc = "Git Blame" },
     { "<leader>gl", function() Snacks.picker.git_log() end,                                 desc = "Git Log" },
     { "<leader>gL", function() Snacks.picker.git_log_line() end,                            desc = "Git Log Line" },
     { "<leader>gs", function() Snacks.picker.git_status() end,                              desc = "Git Status" },
