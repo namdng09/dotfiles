@@ -52,6 +52,7 @@ return {
       -- get access to the lspconfig plugins functions
       local lspconfig = require("lspconfig")
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      require'lspconfig'.prismals.setup{}
 
       -- setup the lua language server
       lspconfig.lua_ls.setup({
