@@ -1,4 +1,45 @@
 {
+    "async arrow function": {
+        "prefix": "aa",
+        "body": "async (${1:arguments}) => {\n\t${0}\n}"
+    },
+    "immediately-invoked function expression": {
+        "prefix": "iife",
+        "body": ";(function (${1:arguments}) {\n\t${0}\n})(${2})"
+    },
+    "async immediately-invoked function expression": {
+        "prefix": "aiife",
+        "body": ";(async (${1:arguments}) => {\n\t${0}\n})(${2})"
+    },
+    "arrow function": {
+        "prefix": "af",
+        "body": "(${1:arguments}): ${3:Type} => {${2:statement}}",
+        "description": "Arrow function with typed arguments"
+    },
+    "arrow function with destructuring": {
+        "prefix": "fd",
+        "body": "({${1:arguments}}) => ${2:statement}"
+    },
+    "arrow function with destructuring returning destructured": {
+        "prefix": "fdr",
+        "body": "({${1:arguments}}) => ${1:arguments}"
+    },
+    "arrow function with body": {
+        "prefix": "f",
+        "body": "(${1:arguments}) => {\n\t${0}\n}"
+    },
+    "arrow function with return": {
+        "prefix": "fr",
+        "body": "(${1:arguments}) => {\n\treturn ${0}\n}"
+    },
+    "generator function": {
+        "prefix": "gf",
+        "body": "function* (${1:arguments}) {\n\t${0}\n}"
+    },
+    "named generator": {
+        "prefix": "gfn",
+        "body": "function* ${1:name}(${2:arguments}) {\n\t${0}\n}"
+    },
     "Constructor": {
         "prefix": "ctor",
         "body": [
@@ -198,9 +239,17 @@
         "description": "Do-While Statement"
     },
     "Try-Catch Statement": {
-        "prefix": "trycatch",
+        "prefix": "tc",
         "body": ["try {", "\t$0", "} catch (${1:error}) {", "\t", "}"],
         "description": "Try-Catch Statement"
+    },
+        "try/finally": {
+        "prefix": "tf",
+        "body": "try {\n\t${0}\n} finally {\n\t\n}"
+    },
+    "try/catch/finally": {
+        "prefix": "tcf",
+        "body": "try {\n\t${0}\n} catch (${1:error}) {\n\t\n} finally {\n\t\n}"
     },
     "Set Timeout Function": {
         "prefix": "settimeout",
@@ -216,5 +265,66 @@
         "prefix": "#endregion",
         "body": ["//#endregion"],
         "description": "Folding Region End"
+    },
+        "var statement": {
+        "prefix": "v",
+        "body": "var ${1:name}"
+    },
+    "var assignment": {
+        "prefix": "va",
+        "body": "var ${1:name} = ${2:value}"
+    },
+    "let statement": {
+        "prefix": "l",
+        "body": "let ${1:name}"
+    },
+    "const statement": {
+        "prefix": "c",
+        "body": "const ${1:name}"
+    },
+    "const statement from destructuring": {
+        "prefix": "cd",
+        "body": "const { ${2:prop} } = ${1:value}"
+    },
+    "const statement from array destructuring": {
+        "prefix": "cad",
+        "body": "const [ ${2:prop} ] = ${1:value}"
+    },
+    "const assignment awaited": {
+        "prefix": "ca",
+        "body": "const ${1:name} = await ${2:value}"
+    },
+    "const destructuring assignment awaited": {
+        "prefix": "cda",
+        "body": "const { ${1:name} } = await ${2:value}"
+    },
+    "const arrow function assignment": {
+        "prefix": "cf",
+        "body": "const ${1:name} = (${2:arguments}) => {\n\treturn ${0}\n}"
+    },
+    "let assignment awaited": {
+        "prefix": "la",
+        "body": "let ${1:name} = await ${2:value}"
+    },
+    "const assignment yielded": {
+        "prefix": "cy",
+        "body": "const ${1:name} = yield ${2:value}"
+    },
+    "let assignment yielded": {
+        "prefix": "ly",
+        "body": "let ${1:name} = yield ${2:value}"
+    },
+    "const object": {
+        "prefix": "co",
+        "body": "const ${1:name} = {\n\t${0}\n}"
+    },
+    "const array": {
+        "prefix": "car",
+        "body": "const ${1:name} = [\n\t${0}\n]"
+    },
+    "import statement": {
+      "prefix": "imp",
+      "body": "import { ${1:Something} } from '${2:module-name}';",
+      "description": "Import named export from a module"
     }
 }
