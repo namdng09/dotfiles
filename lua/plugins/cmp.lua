@@ -1,17 +1,4 @@
 return {
-  {
-    "L3MON4D3/LuaSnip",
-    dependencies = {
-      -- feed luasnip suggestions to cmp
-      "saadparwaiz1/cmp_luasnip",
-      -- provide vscode like snippets to cmp
-      "rafamadriz/friendly-snippets",
-    }
-  },
-  -- cmp-nvim-lsp provides language specific completion suggestions to nvim-cmp
-  {
-    "hrsh7th/cmp-nvim-lsp",
-  },
   -- nvim-cmp provides auto completion and auto completion dropdown ui
   {
     "hrsh7th/nvim-cmp",
@@ -19,7 +6,6 @@ return {
     dependencies = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
-      "mlaursen/vim-react-snippets",
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
       "rafamadriz/friendly-snippets",
@@ -36,12 +22,6 @@ return {
       require("luasnip.loaders.from_vscode").lazy_load({
         paths = { "./snippets" },
       })
-
-      require("luasnip.loaders.from_snipmate").lazy_load({
-        paths = "./snippets",
-      })
-
-      require("vim-react-snippets").lazy_load()
 
       -- All the cmp setup function to configure our completion experience
       cmp.setup({
