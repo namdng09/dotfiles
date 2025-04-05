@@ -60,14 +60,6 @@ return {
       },
       _log_level = vim.log.levels.WARN,
     })
-
-    vim.api.nvim_create_autocmd("FileType", {
-      pattern = "json",
-      callback = function()
-        vim.bo.formatexpr = ""
-        vim.bo.formatprg = "jq"
-      end,
-    })
   end,
 
   keys = {

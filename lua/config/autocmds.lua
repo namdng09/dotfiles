@@ -50,6 +50,20 @@ vim.api.nvim_create_autocmd("QuickFixCmdPost", {
   end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "json",
+  callback = function()
+    vim.bo.formatexpr = ""
+    vim.bo.formatprg = "jq"
+  end,
+})
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "json",
+  callback = function()
+    vim.bo.formatexpr = ""
+    vim.bo.formatprg = "jq"
+  end,
+})
 -- Setup our JDTLS server any time we open up a java file
 -- vim.cmd [[
 --     augroup jdtls_lsp
